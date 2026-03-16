@@ -2,7 +2,7 @@
 
 A local-first AI orchestration console that plans and executes tool-based workflows through a secure sandbox, with both API and terminal UI experiences.
 
-![alt text](image-8.png)
+![alt text](docs/images/image-8.png)
 ## Table of Contents
 
 - [What Is MCPLink V2](#what-is-mcplink-v2)
@@ -335,28 +335,28 @@ Recommended quality routine before merge:
 
 Paste your 7 images in this section.
 
-Tip: store images under `docs/images/` and update the paths below.
+Images are stored under `docs/images/`.
 
 ### 1. Dashboard
-![alt text](image.png) ![alt text](image-1.png)
+![alt text](docs/images/image.png) ![alt text](docs/images/image-1.png)
 
 ### 2. Plans
-![alt text](image-2.png)
+![alt text](docs/images/image-2.png)
 
 ### 3. Execute
-![alt text](image-3.png)
+![alt text](docs/images/image-3.png)
 
 ### 4. Files
-![alt text](image-4.png)
+![alt text](docs/images/image-4.png)
 
 ### 5. Tools
-![alt text](image-5.png)
+![alt text](docs/images/image-5.png)
 
 ### 6. Policy
-![alt text](image-6.png)
+![alt text](docs/images/image-6.png)
 
 ### 7. History / Logs
-![alt text](image-7.png)
+![alt text](docs/images/image-7.png)
 
 ## Roadmap
 
