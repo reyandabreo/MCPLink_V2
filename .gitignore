@@ -182,6 +182,3 @@ desktop.ini
 
 # Ignore sandbox workspace
 app/sandbox/workspace/*
-
-# Ignore PNG images
-*.png
