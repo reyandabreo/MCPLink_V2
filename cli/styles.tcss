@@ -1,0 +1,2349 @@
+/* ╔════════════════════════════════════════════════════════════╗
+   ║  MCPLink V2  ·  Console Dark Theme                        ║
+   ║  Inspired by: github-dark + terminal cyberpunk            ║
+   ╚════════════════════════════════════════════════════════════╝ */
+
+/* ── Color Palette  (Tokyo Night) ──────────────────────────── */
+$bg:      #0F111A;   /* main terminal background                */
+$surface: #161A2A;   /* secondary background                    */
+$surf2:   #1A1F2E;   /* panel background                        */
+$border:  #414868;   /* panel border — dividers and structure   */
+$hi:      #7AA2F7;   /* primary accent — electric blue          */
+$cyan:    #2AC3DE;   /* secondary accent — cyan / info          */
+$green:   #9ECE6A;   /* success / allowed                       */
+$yellow:  #E0AF68;   /* warning / pending                       */
+$red:     #F7768E;   /* error / restricted                      */
+$purple:  #BB9AF7;   /* informational — soft purple             */
+$text:    #C0CAF5;   /* primary text — light blue-gray          */
+$muted:   #565F89;   /* secondary text — muted gray             */
+$dim:     #565F89;   /* dim text — subtle gray                  */
+
+/* ── Global ─────────────────────────────────────────────────── */
+Screen {
+    background: $bg;
+    layout: vertical;
+}
+
+* { scrollbar-size: 0 0; }
+
+/* ── Top Nav Container (header row + tab row) ──────────────── */
+#top-menu-container {
+    width: 100%;
+    height: auto;
+    background: $bg;
+    border-bottom: tall $border;
+    layout: vertical;
+    padding: 0;
+}
+
+#header-row {
+    width: 100%;
+    height: 4;
+    layout: horizontal;
+    background: $bg;
+    padding: 0 2;
+    align: left middle;
+    border-bottom: solid $border;
+}
+
+#header-title {
+    width: 1fr;
+    height: 4;
+    content-align: left middle;
+    color: $hi;
+    text-style: bold;
+}
+
+#header-chips-container {
+    width: auto;
+    height: 4;
+    content-align: right middle;
+    layout: horizontal;
+}
+
+.top-chip {
+    border: round $border;
+    background: $surf2;
+    color: $muted;
+    padding: 0 2;
+    margin-left: 1;
+    content-align: center middle;
+    height: 3;
+    width: auto;
+}
+
+.chip-accent {
+    border: round $hi 60%;
+    background: $hi 15%;
+    color: $hi;
+}
+
+#chip-sess { background: $surf2; }
+#chip-status { background: $hi 10%; }
+
+/* ── Nav Row ───────────────────────────────────────────────── */
+#nav-row {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    background: $bg;
+    padding: 0 2;
+    align: left top;
+}
+
+#nav-left-spacer {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.nav-tab {
+    width: auto;
+    height: 3;
+    content-align: center bottom;
+    text-align: center;
+    color: $dim;
+    padding: 0 1;
+    margin-right: 3;
+    background: transparent;
+    border-bottom: heavy $border;
+}
+
+.nav-tab:hover {
+    color: $muted;
+    border-bottom: heavy $muted;
+}
+
+.nav-tab-active {
+    width: auto;
+    height: 3;
+    content-align: center bottom;
+    text-align: center;
+    color: $hi;
+    text-style: bold;
+    padding: 0 1;
+    margin-right: 3;
+    background: transparent;
+    border-bottom: heavy $hi;
+}
+
+#nav-spacer {
+    width: 1fr;
+    height: 3;
+}
+
+/* ── Main Content Area ──────────────────────────────────────── */
+#main-container {
+    width: 100%;
+    height: 1fr;
+    background: $bg;
+    layout: vertical;
+    overflow: hidden hidden;
+}
+
+#dashboard #main-container {
+    overflow: hidden auto;
+}
+
+/* ── Hero Box ──────────────────────────────────────────────── */
+#hero-box {
+    width: 100%;
+    height: auto;
+    border: none;
+    background: transparent;
+    margin: 1 2 0 2;
+    padding: 1 0;
+    align: center top;
+}
+
+BrandHeader {
+    height: auto;
+    width: 90;
+    border: none;
+    background: transparent;
+    align: center top;
+    padding: 0;
+    margin: 0;
+}
+
+.brand-logo-line {
+    content-align: center middle;
+    width: 100%;
+}
+
+.brand-logo-tagline {
+    content-align: center middle;
+    width: 100%;
+    margin-top: 1;
+    color: $dim;
+}
+
+
+
+/* ── Dashboard Stat Cards ───────────────────────────────────── */
+#dash-stat-row {
+    layout: horizontal;
+    height: auto;
+    width: 100%;
+    margin: 1 2 0 2;
+}
+
+.stat-card {
+    width: 1fr;
+    height: auto;
+    min-height: 7;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    margin-right: 1;
+    layout: vertical;
+}
+
+.stat-card:hover {
+    border: round $hi;
+}
+
+.stat-card-last { margin-right: 0; }
+
+.stat-header {
+    height: 1;
+    width: 100%;
+    layout: horizontal;
+    margin-bottom: 1;
+}
+
+.stat-label {
+    height: 1;
+    width: 1fr;
+    color: $dim;
+    text-style: bold;
+}
+
+.stat-dot {
+    width: auto;
+    height: 1;
+    content-align: right middle;
+}
+
+.stat-value {
+    height: 2;
+    color: $text;
+    text-style: bold;
+}
+
+.stat-value-green { color: $green; text-style: bold; height: 2; }
+.stat-value-blue  { color: $hi;    text-style: bold; height: 2; }
+
+.stat-sub {
+    height: 1;
+    color: $dim;
+    margin-top: 1;
+}
+
+.stat-bar-green {
+    height: 1;
+    color: $green;
+    margin-top: 1;
+}
+
+.stat-bar-blue {
+    height: 1;
+    color: $hi;
+    margin-top: 1;
+}
+
+/* ── Dashboard Bottom Split ─────────────────────────────────── */
+#dash-bottom {
+    layout: horizontal;
+    width: 100%;
+    height: auto;
+    min-height: 22;
+    margin: 1 2 1 2;
+}
+
+#dash-launcher {
+    width: 48;
+    height: 100%;
+    border: round $border;
+    background: $bg;
+    margin-right: 1;
+    layout: vertical;
+    padding: 0;
+}
+
+#launcher-list {
+    width: 100%;
+    height: 1fr;
+    background: transparent;
+    padding: 0;
+}
+
+#launcher-list > ListItem {
+    padding: 0 1;
+    height: 3;
+    background: transparent;
+    border: none;
+}
+
+#launcher-list > ListItem.--highlight {
+    background: $surf2;
+    border-left: tall $hi;
+}
+
+#launcher-list > ListItem:hover {
+    background: $hi 10%;
+}
+
+#launcher-list > ListItem > Horizontal {
+    layout: horizontal;
+    width: 100%;
+}
+
+.launcher-text {
+    width: 1fr;
+    content-align: left middle;
+}
+
+.launcher-icon {
+    width: auto;
+    content-align: right middle;
+    padding-right: 1;
+}
+
+#launcher-footer {
+    height: 3;
+    background: $border;
+    color: $muted;
+    content-align: center middle;
+    border-top: solid $border;
+    padding: 0 1;
+}
+
+#dash-activity {
+    width: 1fr;
+    height: 100%;
+    border: round $border;
+    background: $bg;
+    layout: vertical;
+    padding: 0;
+}
+
+#activity-log {
+    width: 100%;
+    height: 1fr;
+    background: transparent;
+    padding: 0 1;
+}
+
+#activity-input-row {
+    height: 6;
+    layout: horizontal;
+    border-top: solid $border;
+    background: $bg;
+    padding: 1 2;
+    align: left middle;
+}
+
+#activity-input-container {
+    width: 1fr;
+    height: 3;
+    border: round $border;
+    background: #0F111A;
+    layout: horizontal;
+    margin-right: 1;
+}
+
+#activity-prompt {
+    width: auto;
+    height: 1;
+    content-align: left middle;
+    padding-left: 1;
+}
+
+#activity-input-box {
+    width: 1fr;
+    height: 1;
+    border: none;
+    background: transparent;
+    color: $text;
+    padding: 0 1;
+    margin: 0;
+}
+
+#activity-input-box:focus {
+    border: none;
+    background: transparent;
+}
+
+#activity-input-box > .input--placeholder {
+    color: $dim;
+}
+
+#activity-enter {
+    width: 12;
+    height: 3;
+    content-align: center middle;
+    border: round $bg;
+    background: $hi;
+    color: $bg;
+    text-style: bold;
+    margin: 0;
+}
+
+#activity-enter:hover {
+    background: $hi 80%;
+    border: round $bg;
+}
+
+/* ── App Footer / Status Bar ────────────────────────────────── */
+#app-footer {
+    width: 100%;
+    height: 1;
+    background: $bg;
+    border-top: solid $border;
+    layout: horizontal;
+    padding: 0 2;
+    align: left middle;
+}
+
+#footer-left {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+    color: $dim;
+}
+
+#footer-right {
+    width: auto;
+    height: 1;
+    content-align: right middle;
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+.label   { color: $muted; }
+.value   { color: $text; text-style: bold; }
+.success { color: $green; }
+.warning { color: $yellow; }
+.error   { color: $red; }
+.muted   { color: $dim; }
+.hidden  { display: none; }
+
+.hotkey-menu {
+    color: $muted;
+    height: 2;
+    content-align: center middle;
+    border-top: tall $dim;
+    padding: 0 1;
+}
+
+.panel-section-title {
+    color: $yellow;
+    text-style: bold;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+/* ── Generic full panel ─────────────────────────────────────── */
+.full-panel {
+    width: 1fr;
+    height: 1fr;
+    border: round $border;
+    border-title-align: left;
+    border-title-color: $hi;
+    border-title-style: bold;
+    background: $bg;
+    padding: 1 2;
+    margin: 0 2;
+    overflow: auto auto;
+}
+
+.panel {
+    border: round $border;
+    background: $bg;
+    padding: 1;
+    margin: 1;
+}
+
+.panel-title { color: $text; text-style: bold; }
+
+/* ── Split layout ────────────────────────────────────────────── */
+#split-container {
+    layout: horizontal;
+    width: 100%;
+    height: 1fr;
+    margin: 0 2;
+    overflow: auto auto;
+}
+
+.split-left {
+    width: 40;
+    height: 1fr;
+    border: round $border;
+    border-title-align: left;
+    border-title-color: $hi;
+    border-title-style: bold;
+    background: $bg;
+    padding: 1 1;
+    margin-right: 1;
+    overflow: auto auto;
+}
+
+.split-right {
+    width: 1fr;
+    height: 1fr;
+    border: round $border;
+    border-title-align: left;
+    border-title-color: $yellow;
+    border-title-style: bold;
+    background: $bg;
+    padding: 1 2;
+    overflow: auto auto;
+}
+
+
+/* ── Plans Screen ──────────────────────────────────────────── */
+#plans-scroll           { width: 100%; height: 1fr; padding: 1 2; }
+
+#plans-top-split {
+    width: 100%;
+    height: auto;
+    min-height: 28;
+    layout: horizontal;
+    margin-bottom: 1;
+}
+
+/* Left — builder panel */
+#plan-builder-panel {
+    width: 2fr;
+    height: auto;
+    border: round $hi 40%;
+    background: $bg;
+    padding: 1 2;
+    margin-right: 2;
+    layout: vertical;
+}
+
+#builder-header  { height: 1; margin-bottom: 1; }
+.plan-field-label {
+    height: 1;
+    color: $dim;
+    margin-top: 1;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.plan-input-row {
+    height: 3;
+    margin-top: 0;
+    margin-bottom: 1;
+    border: round $border;
+    background: $surf2;
+    layout: horizontal;
+    align: left middle;
+}
+
+#row-prompt {
+    height: 7;
+    align: left top;
+}
+
+.plan-input-row:focus-within { border: round $hi; background: #1A2545; }
+
+.plan-input-prefix {
+    width: 4;
+    height: 1;
+    content-align: center middle;
+}
+
+.plan-input-suffix {
+    width: 4;
+    height: 1;
+    content-align: center middle;
+}
+
+.plan-field-input {
+    width: 1fr;
+    height: 1;
+    border: none;
+    background: transparent;
+    color: $text;
+    padding: 0 1;
+}
+
+.plan-field-input:focus {
+    border: none;
+    background: transparent;
+}
+
+.plan-prompt-input {
+    width: 1fr;
+    height: 5;
+    border: none;
+    background: transparent;
+    color: $text;
+    padding: 0 1;
+    scrollbar-size: 0 0;
+}
+
+.plan-prompt-input:focus {
+    border: none;
+    background: transparent;
+}
+
+Select {
+    width: 1fr;
+    height: 1;
+    border: none;
+    background: transparent;
+    color: $green;
+    padding: 0;
+    margin: 0;
+}
+
+Select:focus { border: none; background: transparent; }
+SelectOverlay { background: $surf2; border: round $border; }
+Select > SelectCurrent { border: none; background: transparent; }
+
+.plan-status-row { height: 1; margin-top: 1; }
+
+#plan-btn-row {
+    height: 3;
+    align: right middle;
+    margin-top: 2;
+    layout: horizontal;
+}
+
+.plan-btn {
+    height: 3;
+    content-align: center middle;
+    padding: 0 2;
+    margin-left: 1;
+}
+
+.plan-btn-secondary {
+    border: round $border;
+    background: $surf2;
+    color: $muted;
+}
+
+.plan-btn-secondary:hover { background: $border; color: $text; }
+
+.plan-btn-primary {
+    border: round $hi;
+    background: $hi;
+    color: $bg;
+    text-style: bold;
+}
+
+.plan-btn-primary:hover { background: $hi 80%; }
+
+/* Right — summary panel */
+#plan-summary-panel {
+    width: 1fr;
+    height: auto;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#plan-actions-panel {
+    width: 1fr;
+    height: auto;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#summary-header { height: 1; margin-bottom: 1; }
+
+#summary-grid-row1,
+#summary-grid-row2 {
+    height: 6;
+    layout: horizontal;
+    margin-bottom: 1;
+}
+
+.summary-stat-box {
+    width: 1fr;
+    height: 6;
+    border: round $border;
+    background: $surf2;
+    padding: 1 2;
+    margin-right: 1;
+    layout: vertical;
+}
+
+.summary-stat-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+}
+
+.summary-stat-value {
+    height: 2;
+    text-style: bold;
+    content-align: left bottom;
+}
+
+#summary-meta { height: auto; margin-top: 1; layout: vertical; }
+
+.summary-meta-row {
+    height: 2;
+    border-bottom: solid $border;
+    padding: 0;
+    content-align: left middle;
+}
+
+/* Pipeline section */
+#pipeline-section {
+    width: 100%;
+    height: auto;
+    min-height: 16;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    margin-top: 1;
+    layout: vertical;
+}
+
+#pipeline-header-row {
+    height: 1;
+    layout: horizontal;
+    align: left middle;
+    margin-bottom: 1;
+}
+
+#pipeline-title   { width: auto; height: 1; margin-right: 1; }
+#pipeline-divider { width: 1fr; height: 1; }
+
+#pipeline-cards-row {
+    height: auto;
+    min-height: 12;
+    layout: horizontal;
+    align: left top;
+}
+
+.pipeline-step-card {
+    width: 36;
+    height: auto;
+    min-height: 12;
+    border: round $border;
+    background: $surf2;
+    padding: 1 2;
+    margin-right: 1;
+}
+
+.pipeline-step-card:hover { border: round $hi; }
+
+.pipeline-ghost {
+    border: dashed $border;
+    background: transparent;
+    color: $dim;
+    content-align: center middle;
+    opacity: 50%;
+}
+
+
+.step-card-restricted {
+    border-left: heavy $red;
+    background: #1f1020;
+}
+
+/* ── Execute Screen ─────────────────────────────────────────── */
+
+/* ── Execute ─ workspace hero ────────────────────────────────── */
+#exec-workspace-hero {
+    width: 100%;
+    height: 3;
+    background: #161824;
+    border-bottom: solid $border;
+    align: left middle;
+    padding: 0 1;
+    layout: horizontal;
+}
+
+#exec-hero-label {
+    width: auto;
+    height: 1;
+    content-align: left middle;
+}
+
+#exec-hero-path {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+}
+
+/* ── Execute Body ─────────────────────────────────────────────── */
+#exec-body {
+    width: 100%;
+    height: 1fr;
+    layout: horizontal;
+    padding: 1 2;
+    overflow: hidden hidden;
+}
+
+/* ── LEFT PANEL: Progress · Policy · Queue ──────────────────── */
+#exec-left-panel {
+    width: 30;
+    height: 1fr;
+    min-height: 22;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    layout: vertical;
+    margin-right: 1;
+    overflow-y: auto;
+    scrollbar-size: 0 0;
+}
+
+.exec-section-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-top: 1;
+    margin-bottom: 0;
+}
+
+#exec-step-label {
+    height: 2;
+    text-style: bold;
+    color: $text;
+    content-align: left middle;
+    margin-bottom: 1;
+}
+
+#exec-bar-row {
+    height: 1;
+    layout: horizontal;
+    align: left middle;
+    margin-bottom: 1;
+}
+
+#exec-bar {
+    width: 1fr;
+    height: 1;
+    color: $hi;
+}
+
+#exec-pct {
+    width: 5;
+    height: 1;
+    content-align: right middle;
+    color: $hi;
+    text-style: bold;
+}
+
+#exec-policy-heading {
+    margin-top: 2;
+}
+
+.exec-policy-box {
+    height: 3;
+    border: round $green 30%;
+    background: $green 8%;
+    content-align: center middle;
+    margin-bottom: 2;
+    text-style: bold;
+    color: $green;
+}
+
+#exec-queue-heading {
+    margin-top: 2;
+}
+
+#exec-queue-list {
+    height: 1fr;
+    overflow: hidden auto;
+    margin-top: 1;
+    scrollbar-size: 0 0;
+}
+
+#exec-queue-items {
+    height: auto;
+    color: $muted;
+}
+
+/* ── RIGHT PANEL: Action · Metrics · Log ────────────────────── */
+#exec-right-side {
+    width: 1fr;
+    height: 1fr;
+    layout: vertical;
+    overflow-y: auto;
+    scrollbar-size: 0 0;
+}
+
+/* ─ Action Panel ─ */
+#exec-action-panel {
+    width: 100%;
+    height: auto;
+    min-height: 16;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    layout: vertical;
+    margin-bottom: 1;
+}
+
+#exec-action-header {
+    height: 1;
+    layout: horizontal;
+    align: left middle;
+    border-bottom: solid $border;
+    padding-bottom: 1;
+    margin-bottom: 1;
+}
+
+#exec-action-name {
+    width: 1fr;
+    height: 1;
+    color: $hi;
+    text-style: bold;
+}
+
+.exec-pid {
+    width: 30;
+    height: 1;
+    content-align: right middle;
+    color: $dim;
+}
+
+.exec-explanation-text {
+    height: auto;
+    min-height: 2;
+    padding: 0 0 1 0;
+    margin: 0;
+    color: $muted;
+}
+
+/* Args JSON block */
+#exec-args-box {
+    width: 100%;
+    height: auto;
+    min-height: 6;
+    border: solid $border;
+    background: $surf2;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#exec-args-box-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+.exec-args-json {
+    height: auto;
+    padding: 0;
+    color: $text;
+}
+
+/* ─ Metrics Row ─ */
+#exec-metrics-row {
+    width: 100%;
+    height: auto;
+    min-height: 7;
+    border: round $border;
+    background: $surf2;
+    layout: horizontal;
+    align: left top;
+    padding: 1 2;
+    margin-bottom: 1;
+}
+
+.exec-metric-cell {
+    width: 1fr;
+    height: auto;
+    layout: vertical;
+    content-align: center top;
+    align: center top;
+}
+
+.exec-metric-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    content-align: center middle;
+    margin-bottom: 0;
+}
+
+.exec-metric-value {
+    height: 1;
+    text-style: bold;
+    content-align: center middle;
+    color: $purple;
+    margin-top: 0;
+}
+
+.exec-metric-yellow {
+    color: $yellow;
+}
+
+.exec-mini-bar {
+    height: 1;
+    content-align: center middle;
+    color: $dim;
+    margin-top: 0;
+}
+
+.exec-metric-sub {
+    height: 1;
+    color: $dim;
+    content-align: center middle;
+}
+
+.exec-metric-sep {
+    width: 1;
+    height: 5;
+    content-align: center middle;
+    color: $border;
+}
+
+/* ─ Log Panel ─ */
+#exec-log-panel {
+    width: 100%;
+    height: 15;
+    border: round $border;
+    background: $bg;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#exec-log-header {
+    height: 1;
+    layout: horizontal;
+    align: left middle;
+    border-bottom: solid $border;
+    margin-bottom: 1;
+}
+
+#exec-log-title {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+}
+
+#exec-log {
+    height: 1fr;
+    background: transparent;
+    overflow-y: auto;
+    scrollbar-size: 0 0;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+#exec-footer {
+    width: 100%;
+    height: 3;
+    border-top: solid $border;
+    background: $bg;
+    layout: horizontal;
+    align: left middle;
+    padding: 0 2;
+}
+
+#exec-footer-left {
+    width: 1fr;
+    height: 3;
+    layout: horizontal;
+    align: left middle;
+}
+
+.exec-hotkey {
+    height: 3;
+    width: auto;
+    content-align: center middle;
+    padding: 0 2;
+    margin-right: 1;
+    color: $dim;
+}
+
+#exec-abort-btn {
+    height: 3;
+    width: auto;
+    content-align: center middle;
+    padding: 0 2;
+    color: $red;
+}
+
+/* ── Policy Control Center (3-column redesign) ───────────────── */
+#policy-3col {
+    layout: horizontal;
+    width: 100%;
+    height: 1fr;
+    padding: 1 2;
+}
+
+/* ── Left Panel ──────────────────────────────────────────────── */
+#pol-left {
+    width: 28;
+    height: 1fr;
+    border: round #222e49;
+    background: #161a2a;
+    overflow: hidden hidden;
+}
+
+/* ── Middle Panel ────────────────────────────────────────────── */
+#pol-middle {
+    width: 1fr;
+    height: 1fr;
+    border: round #222e49;
+    background: #161a2a;
+    overflow: hidden hidden;
+    margin-left: 1;
+}
+
+/* ── Right Panel ─────────────────────────────────────────────── */
+#pol-right {
+    width: 30;
+    height: 1fr;
+    border: round #222e49;
+    background: #161a2a;
+    overflow: hidden hidden;
+    margin-left: 1;
+}
+
+/* ── Panel Headers ───────────────────────────────────────────── */
+.pol-panel-header {
+    height: 2;
+    width: 100%;
+    background: #1e2132;
+    border-bottom: solid #222e49;
+    align: left middle;
+}
+.pol-header-title {
+    width: 1fr;
+    height: 2;
+    content-align: left middle;
+    padding: 0 1;
+}
+.pol-header-right {
+    width: auto;
+    height: 2;
+    content-align: right middle;
+    padding: 0 1;
+    color: $muted;
+}
+
+/* ── Left Nav ────────────────────────────────────────────────── */
+#pol-nav-list {
+    height: 1fr;
+    width: 100%;
+    padding: 1 0;
+    overflow: hidden hidden;
+}
+.pol-nav-item {
+    height: 3;
+    width: 100%;
+    content-align: left middle;
+    color: $muted;
+    padding: 0 1;
+}
+.pol-nav-active {
+    background: #283457;
+    color: $text;
+    border-left: thick $hi;
+}
+
+/* ── Active Profile Footer ───────────────────────────────────── */
+#pol-profile-footer {
+    height: auto;
+    width: 100%;
+    border-top: solid #222e49;
+    background: $hi 8%;
+    padding: 1 2;
+}
+.pol-profile-label {
+    height: 1;
+    color: $hi;
+    text-style: bold;
+}
+.pol-profile-value {
+    height: 1;
+    color: $text;
+}
+
+/* ── Policy Inspector Grid ───────────────────────────────────── */
+#pol-view-content {
+    height: 1fr;
+    width: 100%;
+    scrollbar-size: 0 0;
+    padding: 1 0;
+}
+.pol-grid-row {
+    height: auto;
+    width: 100%;
+    padding: 0 2;
+    margin-bottom: 1;
+}
+.pol-grid-cell {
+    width: 1fr;
+    height: auto;
+    padding: 0 1;
+}
+.pol-field-label {
+    height: 1;
+    color: $muted;
+    text-style: bold;
+}
+.pol-field-value {
+    height: 2;
+    color: $cyan;
+    text-style: bold;
+}
+
+/* ── Impact Assessment Card ──────────────────────────────────── */
+#pol-impact-card {
+    margin: 0 2 1 2;
+    border: round #222e49;
+    background: $bg 80%;
+    padding: 1 2;
+    height: auto;
+}
+#pol-impact-title {
+    height: 2;
+    content-align: left middle;
+    color: $text;
+}
+.pol-impact-metric-row {
+    height: 2;
+    align: left middle;
+    width: 100%;
+}
+.pol-impact-label {
+    width: 1fr;
+    height: 2;
+    content-align: left middle;
+    color: $muted;
+}
+.pol-impact-value {
+    width: auto;
+    height: 2;
+    content-align: right middle;
+    color: $yellow;
+}
+.pol-impact-bar-row {
+    height: 1;
+    width: 100%;
+    content-align: left middle;
+}
+#pol-impact-desc {
+    height: auto;
+    color: $muted;
+    margin-top: 1;
+}
+
+/* ── Edit panel ──────────────────────────────────────────────── */
+#pol-edit-panel   { height: 1fr; padding: 1 2; }
+.pol-edit-section { text-style: bold; margin-top: 1; height: auto; }
+.pol-input-row    { height: auto; margin-bottom: 1; align: left middle; }
+.pol-input-label  { width: 30; height: 3; content-align: left middle; color: $muted; }
+.pol-input {
+    width: 1fr;
+    height: 3;
+    border: round $border;
+    background: $surf2;
+    color: $text;
+    padding: 0 1;
+}
+.pol-input:focus   { border: round $hi; background: #283457; }
+#policy-status     { height: 1; padding: 0 2; }
+#pol-edit-status   { height: 1; padding: 0 2; }
+
+/* ── Right Panel: Tool Access ────────────────────────────────── */
+#pol-legend-row {
+    height: 2;
+    width: 100%;
+    border-bottom: solid #222e49;
+    padding: 0 1;
+    content-align: left middle;
+    color: $muted;
+}
+#pol-tools-list {
+    height: 1fr;
+    width: 100%;
+    scrollbar-size: 0 0;
+}
+.pol-tool-row {
+    height: 2;
+    width: 100%;
+    padding: 0 1;
+    content-align: left middle;
+    color: $text;
+}
+
+/* ── Traffic Volume Footer ───────────────────────────────────── */
+#pol-traffic-footer {
+    height: auto;
+    width: 100%;
+    border-top: solid #222e49;
+    background: $bg 60%;
+    padding: 1 2 1 2;
+}
+.pol-traffic-head-row {
+    height: 2;
+    align: left middle;
+    width: 100%;
+}
+.pol-traffic-lbl {
+    width: 1fr;
+    height: 2;
+    content-align: left middle;
+    color: $muted;
+    text-style: bold;
+}
+.pol-traffic-val {
+    width: 12;
+    height: 2;
+    content-align: right middle;
+    color: $cyan;
+    text-style: bold;
+}
+#pol-sparkbar {
+    height: 3;
+    width: 100%;
+    content-align: left middle;
+    margin-top: 1;
+}
+
+/* ── Policy Hotkey Bar ───────────────────────────────────────── */
+.pol-hotkey-bar {
+    height: 2;
+    width: 100%;
+    background: #161a2a;
+    border-top: solid #222e49;
+    content-align: left middle;
+    padding: 0 2;
+    color: $muted;
+}
+
+/* ── Tools ──────────────────────────────────────────────────── */
+#tools-legend { height: 1; color: $muted; padding: 0 1; margin-bottom: 1; }
+
+DataTable { background: transparent; height: auto; }
+
+DataTable > .datatable--header {
+    background: $surf2;
+    color: $hi;
+    text-style: bold;
+}
+
+DataTable > .datatable--cursor { background: #283457; color: $text; }
+DataTable > .datatable--hover  { background: $surf2; }
+DataTable > .datatable--even-row { background: transparent; }
+DataTable > .datatable--odd-row  { background: transparent; }
+
+/* ── Files ─ workspace hero ──────────────────────────────────── */
+#workspace-hero {
+    width: 100%;
+    height: 3;
+    background: #161824;
+    border-bottom: solid $border;
+    align: left middle;
+    padding: 0 1;
+    layout: horizontal;
+}
+
+#hero-label {
+    width: auto;
+    height: 1;
+    content-align: left middle;
+}
+
+#hero-path {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+}
+
+/* ── Files ─ 3-column split ──────────────────────────────────── */
+#files-split { layout: horizontal; height: 1fr; width: 100%; }
+
+/* LEFT: Explorer sidebar */
+#files-explorer {
+    width: 30;
+    height: 1fr;
+    background: #10121c;
+    border-right: solid $border;
+    layout: vertical;
+}
+
+#explorer-header-row {
+    height: 3;
+    border-bottom: solid $border;
+    align: left middle;
+    padding: 0 1;
+    layout: horizontal;
+}
+
+#explorer-label {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+}
+
+#explorer-new-btn {
+    width: auto;
+    height: 1;
+    content-align: right middle;
+    color: $dim;
+}
+
+#sandbox-tree {
+    width: 100%;
+    height: 1fr;
+    background: transparent;
+    border: none;
+    padding: 0 1;
+    scrollbar-size: 0 0;
+}
+
+DirectoryTree > .tree--cursor    { background: $hi 20%; color: $text; text-style: bold; }
+DirectoryTree > .tree--highlight { color: $hi; }
+
+/* CENTER: Code viewer */
+#files-viewer {
+    width: 1fr;
+    height: 1fr;
+    background: #10121c;
+    border-right: solid $border;
+    layout: vertical;
+}
+
+#viewer-titlebar {
+    height: 3;
+    background: #10121c;
+    border-bottom: solid $border;
+    padding: 0 2;
+    align: left middle;
+    layout: horizontal;
+}
+
+#dot-red  { width: 2; height: 1; color: #f7768e 50%; content-align: left middle; }
+#dot-yel  { width: 2; height: 1; color: #e0af68 50%; content-align: left middle; }
+#dot-grn  { width: 2; height: 1; color: #9ece6a 50%; content-align: left middle; }
+
+#viewer-dot-sep {
+    width: 3;
+    height: 1;
+    color: $border;
+    content-align: center middle;
+}
+
+#viewer-tab-label {
+    width: 1fr;
+    height: 1;
+    color: $muted;
+    content-align: left middle;
+}
+
+#viewer-copy-btn, #viewer-expand-btn {
+    width: 3;
+    height: 1;
+    content-align: center middle;
+    color: $dim;
+    margin-left: 1;
+}
+
+#viewer-body {
+    width: 100%;
+    height: 1fr;
+    overflow: auto auto;
+    padding: 1 2;
+    scrollbar-size: 0 0;
+}
+
+#viewer-code {
+    width: auto;
+    height: auto;
+    min-height: 1;
+}
+
+/* RIGHT: Info / metadata panel */
+#files-info-panel {
+    width: 36;
+    height: 1fr;
+    background: #10121c;
+    padding: 1 2;
+    overflow-y: auto;
+    scrollbar-size: 0 0;
+    layout: vertical;
+}
+
+.info-section-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+.info-meta-row {
+    height: 2;
+    layout: horizontal;
+    width: 100%;
+}
+
+.info-meta-key {
+    width: 10;
+    height: 1;
+    color: $dim;
+    content-align: left middle;
+}
+
+.info-meta-val {
+    width: 1fr;
+    height: 1;
+    color: $text;
+    content-align: right middle;
+}
+
+.info-val-cyan { color: $cyan; text-style: bold; }
+
+.info-fullpath-label {
+    height: 1;
+    color: $dim;
+    margin-top: 1;
+    margin-bottom: 0;
+}
+
+.info-path-box {
+    height: 3;
+    background: #10121c;
+    border: solid $border;
+    padding: 0 1;
+    color: $text;
+    overflow: hidden;
+    margin-bottom: 1;
+    align: left middle;
+}
+
+.info-separator { height: 1; margin: 1 0; }
+
+/* Action buttons */
+#info-btn-open {
+    width: 100%;
+    height: 3;
+    margin-bottom: 1;
+    border: none;
+    background: $hi;
+    color: $bg;
+    text-style: bold;
+}
+
+#info-btn-open:hover { background: $hi 80%; border: none; }
+#info-btn-open:focus { border: none; }
+
+#info-btn-sec-row {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    margin-bottom: 1;
+}
+
+#info-btn-rename {
+    width: 1fr;
+    height: 3;
+    border: round $border;
+    background: transparent;
+    color: $muted;
+    margin-right: 1;
+}
+
+#info-btn-rename:hover { background: $surf2; border: round $muted; }
+#info-btn-rename:focus { border: round $muted; }
+
+#info-btn-del {
+    width: 1fr;
+    height: 3;
+    border: round $border;
+    background: transparent;
+    color: $red;
+}
+
+#info-btn-del:hover { background: $red 10%; border: round $red; }
+#info-btn-del:focus { border: round $red; }
+
+/* Open With card */
+#info-open-with-item {
+    width: 100%;
+    height: 5;
+    border: round $border;
+    background: $bg;
+    padding: 0 1;
+    align: left middle;
+    layout: horizontal;
+    margin-top: 1;
+}
+
+#info-open-with-item:hover { border: round $purple; }
+
+#info-ow-icon-bg {
+    width: 5;
+    height: 3;
+    background: $purple 15%;
+    content-align: center middle;
+    align: center middle;
+    margin-right: 1;
+}
+
+#info-ow-icon { width: 3; height: 1; content-align: center middle; color: $purple; text-style: bold; }
+
+#info-ow-details {
+    width: 1fr;
+    height: auto;
+    layout: vertical;
+}
+
+#info-ow-name { height: 1; color: $text; text-style: bold; }
+#info-ow-sub  { height: 1; color: $dim; }
+
+#info-ow-bolt { width: 3; height: 1; content-align: right middle; color: $dim; }
+
+/* ── Inputs (global) ────────────────────────────────────────── */
+Input {
+    border: round $border;
+    background: $surf2;
+    color: $text;
+    padding: 0 1;
+    margin-bottom: 1;
+}
+
+Input:focus { border: round $hi; background: #283457; }
+
+/* ── Radio ──────────────────────────────────────────────────── */
+RadioSet {
+    border: round $border;
+    background: $surface;
+    padding: 0 1;
+    margin-bottom: 1;
+    height: auto;
+}
+
+RadioSet:focus-within { border: round $hi; }
+RadioButton { background: $surface; color: $muted; padding: 0 1; }
+RadioButton:hover { background: $border; color: $text; }
+RadioButton.-on { color: $hi; text-style: bold; }
+RadioButton > .toggle--button { color: $hi; background: $surface; }
+
+/* ── Logs ───────────────────────────────────────────────────── */
+#panel-logs {
+    width: 1fr;
+    height: 1fr;
+    border: round $border;
+    border-title-align: left;
+    border-title-color: $hi;
+    border-title-style: bold;
+    background: #0a0f22;
+    padding: 0 1;
+    margin: 0 2;
+}
+
+#panel-logs RichLog { background: #0a0f22; scrollbar-size: 0 0; }
+#log-file-label { height: 1; color: $muted; padding: 1 1 0 1; }
+
+/* ── History Screen ───────────────────────────────────────── */
+#hist-main-container {
+    width: 100%;
+    height: 1fr;
+    background: $bg;
+    layout: vertical;
+    padding: 1 2;
+    overflow: hidden hidden;
+}
+
+#hist-top-row {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    align: left middle;
+    margin-bottom: 1;
+}
+
+#hist-title {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+}
+
+#hist-search {
+    width: 36;
+    height: 3;
+    border: round $border;
+    background: $surf2;
+    color: $text;
+}
+
+#hist-body {
+    width: 100%;
+    height: 1fr;
+    layout: horizontal;
+    overflow: hidden hidden;
+}
+
+#hist-timeline-panel {
+    width: 30;
+    height: 1fr;
+    background: #121527;
+    border: round $border;
+    margin-right: 1;
+    overflow: hidden hidden;
+}
+
+#hist-timeline-head {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    align: left middle;
+    border-bottom: solid $border;
+    background: $surf2;
+    padding: 0 1;
+}
+
+#hist-timeline-title {
+    width: 1fr;
+    color: $muted;
+    text-style: bold;
+}
+
+#hist-timeline-icon {
+    width: auto;
+    color: $dim;
+}
+
+#hist-timeline-scroll {
+    width: 100%;
+    height: 1fr;
+    padding: 1 1;
+    scrollbar-size: 0 0;
+}
+
+#hist-timeline-list {
+    width: 100%;
+    height: auto;
+    layout: vertical;
+}
+
+.hist-timeline-item {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1;
+    padding: 0 1;
+    border-left: tall $border;
+}
+
+.hist-timeline-empty {
+    width: 100%;
+    color: $dim;
+    padding: 0 1;
+}
+
+#hist-timeline-foot {
+    width: 100%;
+    height: 2;
+    content-align: center middle;
+    border-top: solid $border;
+    color: $dim;
+    background: #0b0d16;
+}
+
+#hist-explorer-panel {
+    width: 1fr;
+    height: 1fr;
+    background: #121527;
+    border: round $border;
+    margin-right: 1;
+    layout: vertical;
+    overflow: hidden hidden;
+}
+
+#hist-explorer-head {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    align: left middle;
+    border-bottom: solid $border;
+    background: $surf2;
+    padding: 0 1;
+}
+
+#hist-explorer-title {
+    width: 1fr;
+    color: $muted;
+    text-style: bold;
+}
+
+#hist-explorer-lights {
+    width: auto;
+    color: $dim;
+}
+
+#history-table {
+    width: 100%;
+    height: 1fr;
+    background: #121527;
+    color: $text;
+    border: none;
+}
+
+#history-table > .datatable--header {
+    background: #171b2c;
+    color: $muted;
+    text-style: bold;
+}
+
+#history-table > .datatable--cursor {
+    background: $hi 15%;
+    border-left: tall $hi;
+}
+
+#hist-table-foot {
+    width: 100%;
+    height: 2;
+    content-align: center middle;
+    border-top: solid $border;
+    color: $dim;
+    background: #0b0d16;
+}
+
+#hist-inspector-panel {
+    width: 42;
+    height: 1fr;
+    background: #121527;
+    border: round $border;
+    layout: vertical;
+    overflow: hidden hidden;
+}
+
+#hist-inspector-head {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    align: left middle;
+    border-bottom: solid $border;
+    background: $surf2;
+    padding: 0 1;
+}
+
+#hist-inspector-title {
+    width: 1fr;
+    color: $muted;
+    text-style: bold;
+}
+
+#hist-inspector-icon {
+    width: auto;
+    color: $dim;
+}
+
+#hist-inspector-scroll {
+    width: 100%;
+    height: 1fr;
+    padding: 1 1;
+    scrollbar-size: 0 0;
+}
+
+#hist-summary-label {
+    width: 100%;
+    height: 1;
+    color: $hi;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#hist-summary-box {
+    width: 100%;
+    height: auto;
+    border: round $border;
+    background: #0f1220;
+    padding: 1;
+    margin-bottom: 1;
+}
+
+#hist-tabs-row {
+    width: 100%;
+    height: 2;
+    layout: horizontal;
+    border-bottom: solid $border;
+    margin-bottom: 1;
+}
+
+.hist-tab {
+    width: auto;
+    padding: 0 1;
+    content-align: center middle;
+    color: $dim;
+}
+
+.hist-tab-active {
+    color: $hi;
+    text-style: bold;
+}
+
+#hist-detail {
+    width: 100%;
+    height: auto;
+    min-height: 10;
+    border: round #1f253d;
+    background: #0b0d16;
+    color: $text;
+    padding: 1;
+    margin-bottom: 1;
+}
+
+#hist-resources-title {
+    width: 100%;
+    height: 1;
+    color: $hi;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#hist-resources {
+    width: 100%;
+    height: auto;
+    min-height: 2;
+    color: $cyan;
+}
+
+#hist-inspector-foot {
+    width: 100%;
+    height: 2;
+    content-align: center middle;
+    border-top: solid $border;
+    color: $dim;
+    background: #0b0d16;
+}
+
+#hist-bottom-help {
+    width: 100%;
+    height: 2;
+    content-align: center middle;
+    border-top: solid $border;
+    color: $dim;
+    margin-top: 1;
+}
+
+/* ── Compat shims ───────────────────────────────────────────── */
+#info-boxes-container { layout: horizontal; height: 10; align: center top; width: 100%; }
+
+.b-panel {
+    width: 48;
+    height: 8;
+    border: round $border;
+    border-title-align: center;
+    border-title-color: $hi;
+    background: $bg;
+    padding: 1 2;
+    margin: 0 2;
+}
+
+/* ── Dashboard dash-activity title ─────────────────────────── */
+#dash-quickactions { background: transparent; width: 1fr; height: auto; min-height: 10; border: none; padding: 0; }
+#dash-quickactions > ListItem { background: transparent; padding: 0 1; height: auto; border: none; }
+#dash-quickactions > ListItem:hover { background: $surf2; }
+#dash-quickactions > ListItem.--highlight { background: $surf2; }
+#dash-quickactions > ListItem > Static { height: auto; }
+
+/* ── Tools Screen ─────────────────────────────────────────── */
+#tools-main-container {
+    width: 100%;
+    height: 1fr;
+    background: $bg;
+    layout: vertical;
+    overflow: hidden hidden;
+}
+
+#tools-body {
+    width: 100%;
+    height: 1fr;
+    layout: horizontal;
+    padding: 1 2;
+    overflow: hidden hidden;
+}
+
+/* LEFT: Tool Registry Table */
+#tools-left-panel {
+    width: 48;
+    height: 1fr;
+    background: #10121c;
+    border: solid $border;
+    layout: vertical;
+    overflow: hidden hidden;
+    scrollbar-size: 0 0;
+}
+
+#tools-registry-header {
+    height: 3;
+    background: #12192a;
+    border-bottom: solid $border;
+    align: left middle;
+    layout: horizontal;
+    padding: 0 1;
+}
+
+#tools-registry-title {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+    color: $text;
+    text-style: bold;
+}
+
+#tools-registry-count {
+    width: auto;
+    height: 1;
+    content-align: right middle;
+    color: $dim;
+    text-style: bold;
+}
+
+#tools-registry-table {
+    width: 100%;
+    height: 1fr;
+    background: transparent;
+    padding: 0;
+    scrollbar-size: 0 0;
+}
+
+#tools-registry-table > .datatable--header {
+    height: 2;
+    background: #151b2b;
+    color: $muted;
+    text-style: bold;
+}
+
+#tools-registry-table > .datatable--cursor {
+    background: #2a3559;
+    color: $text;
+    border-left: tall $hi;
+}
+
+#tools-registry-table > .datatable--hover {
+    background: #1a233a;
+}
+
+#tools-registry-table > .datatable--odd-row,
+#tools-registry-table > .datatable--even-row {
+    background: #10121c;
+}
+
+/* CENTER: Tool Inspector Panel */
+#tools-inspector-panel {
+    width: 1fr;
+    height: 1fr;
+    background: #1a1f2e;
+    border: round $border;
+    layout: vertical;
+    overflow-y: auto;
+    scrollbar-size: 0 0;
+    padding: 2 2;
+}
+
+#tools-inspector-content {
+    width: 100%;
+    height: auto;
+    min-height: 1;
+    color: $text;
+}
+
+/* RIGHT: Metrics Panel */
+#tools-metrics-panel {
+    width: 36;
+    height: 1fr;
+    background: #10121c;
+    border: round $border;
+    layout: vertical;
+    overflow-y: auto;
+    scrollbar-size: 0 0;
+}
+
+#tools-metrics-header {
+    height: 3;
+    background: #1a1f2e;
+    border-bottom: solid $border;
+    align: left middle;
+    padding: 0 1;
+    color: $cyan;
+    text-style: bold;
+}
+
+#tools-metrics-body {
+    width: 100%;
+    height: auto;
+    padding: 1 1 2 1;
+    color: $text;
+    layout: vertical;
+}
+
+.tools-metric-card {
+    width: 100%;
+    height: auto;
+    min-height: 5;
+    background: #1a1f2e;
+    border: round $border;
+    padding: 1 2;
+    margin-bottom: 1;
+    layout: vertical;
+}
+
+.tools-metric-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+.tools-metric-value {
+    height: 1;
+    color: $text;
+}
+
+.tools-metric-value-large {
+    height: 2;
+    color: $text;
+    text-style: bold;
+}
+
+.tools-metric-value-accent {
+    color: $cyan;
+    text-style: bold;
+}
+
+#tools-risk-row {
+    width: 100%;
+    height: 1;
+    layout: horizontal;
+    align: left middle;
+}
+
+.tools-metric-risk-text {
+    width: 10;
+    height: 1;
+    color: $yellow;
+    text-style: bold;
+}
+
+#tools-metric-risk-bar {
+    width: 1fr;
+    height: 1;
+    content-align: left middle;
+    color: $yellow;
+}
+
+#tools-deps-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin: 1 1 1 1;
+}
+
+#tools-deps-list {
+    width: 100%;
+    height: auto;
+    layout: vertical;
+}
+
+.tools-dependency-row {
+    width: 100%;
+    height: 3;
+    background: #141a28;
+    border: round #141a28;
+    padding: 0 1;
+    align: left middle;
+    margin-bottom: 1;
+}
+
+.tools-dependency-icon {
+    width: 3;
+    height: 1;
+    content-align: center middle;
+    color: $hi;
+}
+
+.tools-dependency-name {
+    width: 1fr;
+    height: 1;
+    color: $text;
+    content-align: left middle;
+}
+
+.tools-dependency-version {
+    width: auto;
+    height: 1;
+    color: $muted;
+    content-align: right middle;
+}
+
+/* Footer */
+#tools-footer {
+    width: 100%;
+    height: 1;
+    background: $bg;
+    border-top: solid $border;
+    padding: 0 2;
+    align: left middle;
+    color: $dim;
+}
+
+/* Inspector Header */
+#tools-inspector-header {
+    width: 100%;
+    height: 2;
+    layout: horizontal;
+    align: left middle;
+    margin-bottom: 2;
+}
+
+#tools-inspector-title {
+    width: 1fr;
+    height: 1;
+    color: $dim;
+}
+
+#tools-inspector-id {
+    width: auto;
+    height: 1;
+    content-align: right middle;
+    color: $dim;
+}
+
+/* Description Section */
+#tools-desc-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#tools-desc-box {
+    width: 100%;
+    height: auto;
+    min-height: 3;
+    background: $bg;
+    border: solid $border;
+    padding: 1 2;
+    color: $text;
+    overflow: hidden;
+    margin-bottom: 2;
+}
+
+/* Policy and Status Row */
+#tools-policy-status-row {
+    width: 100%;
+    height: auto;
+    min-height: 5;
+    layout: horizontal;
+    margin-bottom: 2;
+}
+
+#tools-policy-col {
+    width: 1fr;
+    height: auto;
+    min-height: 5;
+    margin-right: 1;
+    layout: vertical;
+}
+
+#tools-status-col {
+    width: 1fr;
+    height: auto;
+    min-height: 5;
+    layout: vertical;
+}
+
+#tools-policy-label,
+#tools-status-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#tools-policy-badge,
+#tools-status-badge {
+    width: 100%;
+    height: 3;
+    background: $bg;
+    border: solid $border;
+    padding: 1 2;
+    align: center middle;
+    color: $text;
+}
+
+/* Arguments Section */
+#tools-args-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+    margin-top: 2;
+}
+
+#tools-args-box {
+    width: 100%;
+    height: auto;
+    min-height: 3;
+    background: $bg;
+    border: solid $border;
+    padding: 1 2;
+    color: $text;
+    margin-bottom: 2;
+}
+
+/* Capabilities Section */
+#tools-caps-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#tools-caps-list {
+    width: 100%;
+    height: auto;
+    min-height: 1;
+    color: $text;
+    margin-bottom: 2;
+}
+
+/* Metadata Section */
+#tools-meta-label {
+    height: 1;
+    color: $dim;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#tools-meta-row {
+    width: 100%;
+    height: auto;
+    min-height: 4;
+    layout: horizontal;
+    margin-bottom: 2;
+}
+
+#tools-meta-version,
+#tools-meta-author,
+#tools-meta-sandbox {
+    width: 1fr;
+    height: auto;
+    min-height: 4;
+    color: $text;
+    content-align: center middle;
+    padding: 0 1;
+}
+
+/* Toolbar */
+#tools-inspector-toolbar {
+    width: 100%;
+    height: 1;
+    color: $dim;
+    align: center middle;
+    margin-top: 2;
+    padding-top: 1;
+    border-top: solid $border;
+}
