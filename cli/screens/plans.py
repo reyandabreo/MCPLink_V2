@@ -92,6 +92,7 @@ class PlanCreationScreen(Screen):
                             yield Static(f"[bold {_BL}] > [/]", classes="plan-input-prefix")
                             yield TextArea(
                                 "",
+                                placeholder="Describe your goal here…",
                                 id="plan-prompt",
                                 classes="plan-field-input plan-prompt-input",
                             )

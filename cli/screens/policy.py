@@ -15,8 +15,7 @@ from cli.api_client import api
 _EXECUTION_EXACT: frozenset[str] = frozenset({
     "run_python", "execute_code",
     "git_commit", "init_git_repo",
-    "generate_tests", "summarize_document",
-    "move_file", "format_code",
+    "move_file",
 })
 _RESTRICTED_SUBSTR = ("shell",)
 

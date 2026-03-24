@@ -13,6 +13,7 @@ pydantic-settings = "^2.2.1"
 openai = "^1.14.2"
 google-genai = "^0.3.0"
 python-dotenv = "^1.0.1"
+openpyxl = "^3.1.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^8.1.1"

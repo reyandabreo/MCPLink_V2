@@ -8,6 +8,7 @@ from app.memory.session_store import session_store
 from app.memory.history import history_manager
 from app.logs.logger import log_audit
 from app.core.exceptions import MCPLinkError
+import app.tools  # noqa: F401
 
 from app.config import settings as _settings
 
@@ -131,9 +132,12 @@ class AgentOrchestrator:
         job["status"] = "running"
         try:
             result = self.execute_task(session_id, plan_id, "full")
-            job["status"] = "completed"
+            final_status = result.get("plan_status", "failed")
+            job["status"] = "completed" if final_status == "completed" else "failed"
             job["progress"] = "100%"
             job["results"] = result["results"]
+            if final_status != "completed":
+                job["error"] = f"Plan finished with status: {final_status}"
         except Exception as e:
             job["status"] = "failed"
             job["error"] = str(e)

@@ -7,9 +7,10 @@ from app.api.routes import router as api_router
 # Ensure necessary tool imports are executed to register them in the registry
 import app.tools.filesystem
 import app.tools.execution
-import app.tools.code_tools
 import app.tools.git_tools
-import app.tools.document_tools
+import app.tools.news_tools
+import app.tools.spreadsheet_tools
+import app.tools.web_fetch_tools
 
 app = FastAPI(
     title=settings.APP_NAME,

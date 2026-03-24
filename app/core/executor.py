@@ -1,3 +1,4 @@
+import json
 from typing import Dict, Any, List
 from app.llm.schemas import ExecutionPlan, ToolCallStep
 from app.memory.session_store import session_store
@@ -73,12 +74,23 @@ class Executor:
             
             # 4. Execute (In sync mode, we assume the tool limits timeout. In real-world, wrap in asyncio.wait_for)
             tool_output = tool.callable(validated_args)
+
+            # Many tools return JSON strings with a standard status envelope.
+            # Convert tool-level errors into step failures.
+            output_str = str(tool_output)
+            try:
+                parsed = json.loads(output_str)
+                if isinstance(parsed, dict) and parsed.get("status") == "error":
+                    raise ToolExecutionError(parsed.get("message", "Tool returned error status"))
+            except json.JSONDecodeError:
+                # Non-JSON output is valid for some tools.
+                pass
             
             record = {
                 "step_index": step_index,
                 "tool": step.tool_name,
                 "status": "success",
-                "output": str(tool_output),
+                "output": output_str,
                 "explanation": step.explanation
             }
             

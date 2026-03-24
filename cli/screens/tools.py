@@ -16,9 +16,7 @@ _RESTRICTED_EXACT = frozenset({"run_shell", "shell_exec", "bash_exec"})
 _EXECUTION_EXACT  = frozenset({
     "run_python", "execute_code",
     "git_commit", "init_git_repo",
-    "generate_tests", "summarize_document",
-    "move_file", "format_code",
-    "edit_docx_sections",
+    "move_file",
 })
 
 # Tokyo Night Colors
